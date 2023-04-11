@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="background">
+
+        <div id="loader" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+
+        </div>
+
+        <!-- ***********************header************************ -->
+
+        <section id="header">
+            <div id="player1">
+                <div>
+                    <div>
+                        <img class="player_img" src="" alt="">
+                    </div>
+
+                    <p>Score</p>
+                </div>
+                <input id="player1_name" class="player_name" type="text">
+                <p id="player1_name">player 1</p>
+            </div>
+            <button data-target="menu" class="modal_btn" id="menu_btn">Menu</button>
+            <div id="player2">
+                <div id="reversed_player">
+                    <div>
+                        <img class="player_img" src="" alt="">
+                    </div>
+
+
+                    <p>Score</p>
+                </div>
+                <input id="player2_name" class="player_name" type="text">
+                <p id="player2_name">player 2</p>
+            </div>
+        </section>
+
+        <!-- ************************menu modal********************** -->
+
+        <div id="game_end" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+
+        </div>
+        <div id="game_winner" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+
+        </div>
+        <div id="game_error" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+
+        </div>
+
+
+        <div id="menu" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+
+        </div>
+
+
+        <!-- **********************title for tic tac toe*********************** -->
+
+        <section class="title">
+            <h1>Tic Tac Toe</h1>
+        </section>
+        <section class="display">
+            Player <span id="display_player" class="playerX">X</span>'s turn
+        </section>
+
+        <!-- *********************Tic tac toe ************************* -->
+
+        <section class="container">
+
+            <div id="0" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="0_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="0_value" class="tile_back"></div>
+                </div>
+            </div>
+            <div id="1" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="1_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="1_value" class="tile_back"></div>
+                </div>
+            </div>
+            <div id="2" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="2_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="2_value" class="tile_back"></div>
+                </div>
+            </div>
+            <div id="3" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="3_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="3_value" class="tile_back"></div>
+                </div>
+            </div>
+            <div id="4" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="4_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="4_value" class="tile_back"></div>
+                </div>
+            </div>
+            <div id="5" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="5_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="5_value" class="tile_back"></div>
+                </div>
+            </div>
+            <div id="6" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="6_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="6_value" class="tile_back"></div>
+                </div>
+            </div>
+            <div id="7" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="7_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="7_value" class="tile_back"></div>
+                </div>
+            </div>
+            <div id="8" class="tile">
+                <div class="tile_inner">
+                    <div class="tile_front">
+                        <img id="8_img" class="img_pics" src="" alt="">
+                    </div>
+                    <div id="8_value" class="tile_back"></div>
+                </div>
+            </div>
+
+
+        </section>
+
+
+
+        <section class="display announcer hide"></section>
+
+
+        <!-- ************************************controls********************* -->
+
+        <section class="controls">
+            <button onclick="reset()" id="reset">Reset</button>
+            <button class="history" onclick="undo_moves()" id="undo">Undo Move</button>
+            <button class="history" onclick="next_moves()" id="next">Next Saved Move</button>
+        </section>
+
+    </main>
+    <script src="index.js"></script>
+    <script src="modal.js"></script>
+</body>
+
+</html>
