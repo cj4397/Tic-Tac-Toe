@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     font-family: 'Itim', cursive;
+    user-select: none;
 }
 
 .background {
@@ -149,15 +150,24 @@
 
 #reversed_player {
     transform: rotateY(180deg);
-    color: #09C372;
+
 }
 
 
 
 .player_name {
     width: 100px;
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    text-shadow: 0 0 0 #FF3860;
 }
 
+.player_name:disabled {
+
+    pointer-events: none;
+
+}
 
 
 

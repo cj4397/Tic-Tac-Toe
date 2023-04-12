@@ -1,15 +1,53 @@
 
 
-
-
 let board = [
     ['', '', ''],
     ['', '', ''],
     ['', '', '']
 ];
 
+let player1_ = document.getElementById('player1_name_input')
+let player2_ = document.getElementById('player2_name_input')
+
+player1_.placeholder = 'Player 1'
+player2_.placeholder = 'Player 2'
+
 let player1 = "X"
 let player2 = "O"
+
+if (player1_.value === '') player1_.value = 'Player 1';
+if (player2_.value === '') player2_.value = 'Player 2';
+
+player1_.disabled = true
+player2_.disabled = true
+document.getElementById('display_player').innerText = `${player1_.value}  ${player1}`;
+
+let rename_btn = document.getElementsByClassName('rename_btn')
+let rename = document.getElementsByClassName('player_name')
+
+for (const btn of rename_btn) {
+
+
+    btn.addEventListener('click', (e) => {
+
+        let x = e.target.dataset.target
+        let edit = document.getElementById(x)
+        edit.disabled = false
+
+
+    });
+}
+
+for (const input of rename) {
+    input.addEventListener('keydown', (event) => {
+
+        if (event.keyCode === 13) {
+            player1_.disabled = true
+            player2_.disabled = true
+        }
+    })
+}
+
 
 let move_list = []
 let num = 0
@@ -24,179 +62,12 @@ for (let i = 0; i <= 8; i++) {
 }
 
 
-function moves(id, currentPlayer) {
-    return { id, currentPlayer }
-}
-
-
-function recreate() {
-    let sample = [
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
-    ];
-
-    for (let i = 0; i <= (num - 1); i++) {
-        let id = move_list[i].id;
-        let currentPlayer = move_list[i].currentPlayer;
-
-
-        if (currentPlayer === 'X') {
-            document.getElementById('display_player').innerText = player2;
-            document.getElementById('display_player').classList.replace('playerX', 'playerO')
-        } else {
-            document.getElementById('display_player').innerText = player1;
-            document.getElementById('display_player').classList.replace('playerO', 'playerX')
-        };
-
-        switch (true) {
-            case id === '0':
-                sample[0][0] = currentPlayer;
-
-                break;
-            case id === '1':
-                sample[1][0] = currentPlayer
-                break;
-            case id === '2':
-                sample[2][0] = currentPlayer
-                break;
-            case id === '3':
-                sample[0][1] = currentPlayer
-                break;
-            case id === '4':
-                sample[1][1] = currentPlayer
-                break;
-            case id === '5':
-                sample[2][1] = currentPlayer
-                break;
-            case id === '6':
-                sample[0][2] = currentPlayer
-                break;
-            case id === '7':
-                sample[1][2] = currentPlayer
-                break;
-            case id === '8':
-                sample[2][2] = currentPlayer;
-                break;
-        }
-    }
-    board = sample
-}
-
-
-
-// function order(id) {
-
-//     if (currentPlayer === 'X') {
-//         document.getElementById(id).classList.replace('art', 'playerX')
-//         document.getElementById('display_player').innerText = player2;
-//         document.getElementById('display_player').classList.replace('playerX', 'playerO')
-
-//     } else {
-//         document.getElementById(id).classList.replace('art', 'playerO')
-//         document.getElementById('display_player').innerText = player1;
-//         document.getElementById('display_player').classList.replace('playerO', 'playerX')
-//     };
-
-
-//     if (num < move_list.length) {
-//         move_list.splice(num, (move_list.length) - (num))
-//     }
-//     move_list.push(moves(id, currentPlayer))
-//     num++;
-
-
-//     give_value()
-
-
-//     console.log(move_list)
-//     console.log(board)
-//     console.log(num)
-//     console.log(id)
-
-// }
-
-// function reset() {
-//     move_list.splice(0, move_list.length);
-//     board = [
-//         ['', '', ''],
-//         ['', '', ''],
-//         ['', '', '']
-//     ];
-//     num = 0
-//     isGameActive = true;
-
-//     give_value()
-//     currentPlayer = 'X';
-//     console.log(move_list)
-// }
-
-// for (let i = 0; i <= 8; i++) {
-//     document.getElementById(i.toString()).addEventListener(
-//         "click",
-//         function (e) {
-//             console.log(currentPlayer)
-//             let id = e.target.id
-
-
-
-//             switch (true) {
-//                 case id === '0' && board[0][0] === '' && isGameActive:
-//                     board[0][0] = currentPlayer;
-//                     order(id)
-//                     break;
-//                 case id === '1' && board[1][0] === '' && isGameActive:
-//                     board[1][0] = currentPlayer
-//                     order(id)
-//                     break;
-//                 case id === '2' && board[2][0] === '' && isGameActive:
-//                     board[2][0] = currentPlayer
-//                     order(id)
-//                     break;
-//                 case id === '3' && board[0][1] === '' && isGameActive:
-//                     board[0][1] = currentPlayer
-//                     order(id)
-//                     break;
-//                 case id === '4' && board[1][1] === '' && isGameActive:
-//                     board[1][1] = currentPlayer
-//                     order(id)
-//                     break;
-//                 case id === '5' && board[2][1] === '' && isGameActive:
-//                     board[2][1] = currentPlayer
-//                     order(id)
-//                     break;
-//                 case id === '6' && board[0][2] === '' && isGameActive:
-//                     board[0][2] = currentPlayer
-//                     order(id)
-//                     break;
-//                 case id === '7' && board[1][2] === '' && isGameActive:
-//                     board[1][2] = currentPlayer
-//                     order(id)
-//                     break;
-//                 case id === '8' && board[2][2] === '' && isGameActive:
-//                     board[2][2] = currentPlayer;
-//                     order(id)
-//                     break;
-
-//                 default:
-//                     alert(`can't be done`)
-//                     console.log(id)
-//                     console.log(board)
-//                     break;
-//             }
-//         }
-//     );
-// }
-
-// 
-
-
 for (let i = 0; i <= 8; i++) {
     document.getElementById(i.toString()).addEventListener("click", (e) => {
         let id = e.target.parentNode.parentNode.parentNode.id
         try {
             if (isGameActive === true) {
-                Values(id)
+                gives_value(id)
             } else { throw new Error('Game is Finished'); }
 
         } catch (error) {
@@ -205,63 +76,82 @@ for (let i = 0; i <= 8; i++) {
     })
 }
 
-
-function Values(id) {
+function gives_value(id) {
     if (num < move_list.length) {
         move_list.splice(num, (move_list.length) - (num))
     }
 
+
+
     switch (true) {
         case id === '0' && board[0][0] === '':
             board[0][0] = currentPlayer;
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
             break;
         case id === '1' && board[1][0] === '':
             board[1][0] = currentPlayer
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
             break;
         case id === '2' && board[2][0] === '':
             board[2][0] = currentPlayer
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
             break;
         case id === '3' && board[0][1] === '':
             board[0][1] = currentPlayer
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
             break;
         case id === '4' && board[1][1] === '':
             board[1][1] = currentPlayer
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
             break;
         case id === '5' && board[2][1] === '':
             board[2][1] = currentPlayer
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
             break;
         case id === '6' && board[0][2] === '':
             board[0][2] = currentPlayer
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
             break;
         case id === '7' && board[1][2] === '':
             board[1][2] = currentPlayer
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
             break;
         case id === '8' && board[2][2] === '':
             board[2][2] = currentPlayer;
+            gives_name()
+
             move_list.push(moves(id, currentPlayer))
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             num++
@@ -274,14 +164,15 @@ function Values(id) {
             break;
     }
 
+
     document.getElementById("undo").disabled = false;
     document.getElementById("next").disabled = false;
-    Show_Value()
+    show_value()
 
 
 }
 
-function Show_Value() {
+function show_value() {
 
     let tile0 = document.getElementById('0_value')
     let tile1 = document.getElementById('1_value')
@@ -422,9 +313,9 @@ function undo_moves() {
         document.getElementById("next").disabled = false;
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         recreate()
-        Show_Value()
+        show_value()
         if (num === 0) {
-            document.getElementById('display_player').innerText = player1;
+            document.getElementById('display_player').innerText = `${player1_.value}(${player1})`;
             document.getElementById('display_player').classList.replace('playerO', 'playerX')
         }
     } else {
@@ -441,7 +332,7 @@ function next_moves() {
         document.getElementById("undo").disabled = false;
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         recreate()
-        Show_Value()
+        show_value()
     } else {
         num--
         document.getElementById("next").disabled = true;
@@ -461,13 +352,78 @@ function reset() {
 
     document.getElementById("undo").disabled = false;
     document.getElementById("next").disabled = false;
-    Show_Value()
+    show_value()
     currentPlayer = 'X';
     console.log(move_list)
 }
 
+function moves(id, currentPlayer) {
+    return { id, currentPlayer }
+}
+
+function recreate() {
+    let sample = [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ];
+
+    for (let i = 0; i <= (num - 1); i++) {
+        let id = move_list[i].id;
+        let currentPlayer = move_list[i].currentPlayer;
 
 
+        if (currentPlayer === 'X') {
+            document.getElementById('display_player').innerText = `${player2_.value}  ${player2}`;
+            document.getElementById('display_player').classList.replace('playerX', 'playerO')
+        } else {
+            document.getElementById('display_player').innerText = `${player1_.value}  ${player1}`;
+            document.getElementById('display_player').classList.replace('playerO', 'playerX')
+        };
+
+        switch (true) {
+            case id === '0':
+                sample[0][0] = currentPlayer;
+
+                break;
+            case id === '1':
+                sample[1][0] = currentPlayer
+                break;
+            case id === '2':
+                sample[2][0] = currentPlayer
+                break;
+            case id === '3':
+                sample[0][1] = currentPlayer
+                break;
+            case id === '4':
+                sample[1][1] = currentPlayer
+                break;
+            case id === '5':
+                sample[2][1] = currentPlayer
+                break;
+            case id === '6':
+                sample[0][2] = currentPlayer
+                break;
+            case id === '7':
+                sample[1][2] = currentPlayer
+                break;
+            case id === '8':
+                sample[2][2] = currentPlayer;
+                break;
+        }
+    }
+    board = sample
+}
+
+function gives_name() {
+    if (currentPlayer === 'X') {
+        document.getElementById('display_player').innerText = `${player2_.value}  ${player2}`;
+        document.getElementById('display_player').classList.replace('playerX', 'playerO')
+    } else {
+        document.getElementById('display_player').innerText = `${player1_.value}  ${player1}`;
+        document.getElementById('display_player').classList.replace('playerO', 'playerX')
+    };
+}
 
 
 
